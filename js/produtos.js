@@ -16,7 +16,7 @@ const LOJA = {
   // Endereço CSV da Planilha Google publicada (Arquivo > Compartilhar >
   // Publicar na Web > Produtos > CSV). Com ele preenchido, a vitrine vem
   // da planilha, e a lista PRODUTOS abaixo vira só reserva.
-  planilhaCSV: "",
+  planilhaCSV: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-165FzXIaZFPaDtco0Bxep-Ots3RJG10noXBEQHiWnbZWx7ngZCv5Se5uRcp8fr_5x70l7slg9YE-/pub?gid=957233977&single=true&output=csv",
 };
 
 // Categorias dos filtros (na ordem). Só aparecem as que têm produto.

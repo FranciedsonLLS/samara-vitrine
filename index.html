@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Samara Variedades | Perfumes e cosméticos</title>
+  <meta name="description" content="Perfumes árabes, importados e nacionais, cosméticos, cabelos e linha infantil em Jardim de Piranhas/RN. Monte sua sacola e peça pelo WhatsApp.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Samara Variedades">
+  <meta property="og:description" content="Perfumes, cosméticos e presentes. Monte sua sacola e peça pelo WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=4">
+</head>
+<body>
+
+  <header class="topo">
+    <a class="marca" href="#inicio" aria-label="Samara Variedades, voltar ao início">
+      <span class="marca-selo" aria-hidden="true">S</span>
+      <span class="marca-nome">Samara Variedades</span>
+    </a>
+    <button class="topo-sacola" type="button" data-abrir-sacola aria-label="Abrir sacola">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      Sacola
+      <span class="contador" data-contador hidden>0</span>
+    </button>
+  </header>
+
+  <main id="inicio">
+    <section class="abertura">
+      <div class="abertura-miolo">
+        <h1>Perfumes e cosméticos em Jardim de Piranhas</h1>
+        <p class="abertura-sub"><span data-entrega-resumo></span> Monte sua sacola aqui e finalize no WhatsApp, ou <a data-wa href="#">chame a gente direto</a>.</p>
+
+        <div class="cheiros" role="group" aria-labelledby="cheiros-titulo">
+          <p class="cheiros-titulo" id="cheiros-titulo">Como você quer cheirar?</p>
+          <div class="cheiros-lista" data-cheiros></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vitrine" id="vitrine" aria-labelledby="vitrine-titulo">
+      <h2 class="so-leitor" id="vitrine-titulo">Vitrine</h2>
+      <div class="vitrine-barra">
+        <div class="categorias" role="tablist" aria-label="Categorias" data-categorias></div>
+        <label class="busca">
+          <span class="so-leitor">Buscar produto</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input type="search" placeholder="Buscar perfume, marca ou kit" data-busca>
+        </label>
+      </div>
+      <p class="vitrine-status" aria-live="polite" data-status></p>
+      <div class="grade" data-grade></div>
+      <div class="vazio" data-vazio hidden>
+        <p>Nenhum produto com esse filtro.</p>
+        <p>Temos mais coisas na loja. <a data-wa-texto="Olá! Vim pelo site e estou procurando um produto que não vi na vitrine." href="#">Pergunte no WhatsApp</a>.</p>
+      </div>
+    </section>
+
+    <section class="info" aria-label="Como comprar e entrega">
+      <div class="info-miolo">
+        <div>
+          <h2>Como comprar</h2>
+          <ol class="passos">
+            <li><div><strong>Monte sua sacola</strong><p>Toque em "Adicionar" nos produtos que quiser.</p></div></li>
+            <li><div><strong>Envie o pedido</strong><p>A sacola vira uma mensagem pronta no WhatsApp, com a lista e o total.</p></div></li>
+            <li><div><strong>Receba ou retire</strong><p>A gente confirma o estoque e combina a entrega ou a retirada na loja.</p></div></li>
+          </ol>
+        </div>
+        <div>
+          <h2>Entrega grátis</h2>
+          <ul class="cidades" data-cidades></ul>
+          <div class="loja-dados" data-loja></div>
+          <div class="info-acoes">
+            <a class="acao acao-whats" data-wa href="#">Conversar no WhatsApp</a>
+            <a class="acao acao-secundaria" data-instagram href="#" target="_blank" rel="noopener">Ver o Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>© <span data-ano></span> Samara Variedades, Jardim de Piranhas/RN</p>
+  </footer>
+
+  <!-- Barra que aparece quando há itens na sacola -->
+  <div class="barra-sacola" data-barra-sacola aria-hidden="true">
+    <div class="barra-sacola-resumo" data-barra-resumo></div>
+    <button class="acao acao-principal" type="button" data-abrir-sacola tabindex="-1">Ver sacola</button>
+  </div>
+
+  <!-- Sacola -->
+  <dialog class="gaveta" data-gaveta aria-labelledby="sacola-titulo">
+    <div class="gaveta-topo">
+      <h2 id="sacola-titulo">Sua sacola</h2>
+      <button class="fechar" type="button" data-fechar-sacola aria-label="Fechar sacola">×</button>
+    </div>
+    <div class="gaveta-corpo">
+      <p class="gaveta-vazia" data-sacola-vazia>Sua sacola está vazia. Toque em "Adicionar" em um produto para começar.</p>
+      <ul class="itens" data-itens></ul>
+      <div class="totais" data-totais></div>
+      <div class="campos" data-campos>
+        <div class="campo">
+          <label for="cliente-nome">Seu nome (opcional)</label>
+          <input id="cliente-nome" type="text" autocomplete="given-name" data-cliente-nome>
+        </div>
+        <div class="campo">
+          <label for="cliente-entrega">Como prefere receber?</label>
+          <select id="cliente-entrega" data-cliente-entrega></select>
+        </div>
+      </div>
+    </div>
+    <div class="gaveta-rodape" data-gaveta-rodape>
+      <a class="acao acao-whats" href="#" target="_blank" rel="noopener" data-enviar-pedido>Enviar pedido no WhatsApp</a>
+      <button class="esvaziar" type="button" data-esvaziar>Esvaziar sacola</button>
+    </div>
+  </dialog>
+
+  <script src="js/produtos.js?v=4"></script>
+  <script src="js/nucleo.js?v=4"></script>
+  <script src="js/sacola.js?v=4"></script>
+  <script src="js/vitrine.js?v=4"></script>
+  <script src="js/app.js?v=4"></script>
+</body>
+</html>

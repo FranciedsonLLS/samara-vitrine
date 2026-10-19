@@ -29,4 +29,7 @@
 
   document.querySelector("[data-instagram]").href = "https://www.instagram.com/" + L.instagram + "/";
   document.querySelector("[data-ano]").textContent = new Date().getFullYear();
+
+  // Produtos: planilha (se configurada) ou produtos.js. Depois liga sacola e vitrine.
+  S.carregarProdutos().then((r) => S.iniciar(r.produtos, r.origem));
 })();

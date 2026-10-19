@@ -12,18 +12,38 @@
   }
 
   // Cada produto ganha um id estável (usado pela sacola).
-  // Se dois produtos tiverem o mesmo nome, defina "id" manualmente neles.
-  PRODUTOS.forEach((p) => { p.id = p.id || slug(p.nome); });
+  // Nomes repetidos ganham sufixo (-2, -3...) para não se misturarem.
+  function prepararProdutos(lista) {
+    const usados = {};
+    return lista.map((p) => {
+      let id = p.id || slug(p.nome);
+      usados[id] = (usados[id] || 0) + 1;
+      if (usados[id] > 1) id += "-" + usados[id];
+      return Object.assign({}, p, { id });
+    });
+  }
+
+  const modulos = [];
 
   window.Samara = {
     loja: LOJA,
-    produtos: PRODUTOS,
+    produtos: prepararProdutos(PRODUTOS),
+    origemProdutos: "arquivo",
+
+    // As partes do site (sacola, vitrine) se registram aqui e só rodam
+    // depois que os produtos forem carregados (da planilha ou do arquivo).
+    registrar(fn) { modulos.push(fn); },
+    iniciar(produtos, origem) {
+      if (produtos) { this.produtos = prepararProdutos(produtos); this.origemProdutos = origem; }
+      modulos.forEach((fn) => fn());
+    },
     categorias: CATEGORIAS,
     familias: FAMILIAS,
 
     familia(id) { return FAMILIAS.find((f) => f.id === id) || null; },
     categoria(id) { return CATEGORIAS.find((c) => c.id === id) || null; },
-    produto(id) { return PRODUTOS.find((p) => p.id === id) || null; },
+    produto(id) { return this.produtos.find((p) => p.id === id) || null; },
+    slug,
 
     brl(v) { return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); },
 

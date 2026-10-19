@@ -2,7 +2,7 @@
 //  Sacola: guarda os itens escolhidos e monta UMA mensagem
 //  de pedido para o WhatsApp.
 // ============================================================
-(function () {
+window.Samara.registrar(function () {
   const S = window.Samara;
   const CHAVE = "samara-sacola-v1";
   const RETIRADA = "Retirar na loja";
@@ -161,4 +161,4 @@
 
   S.sacola = api;
   render();
-})();
+});

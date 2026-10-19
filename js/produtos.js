@@ -12,6 +12,11 @@ const LOJA = {
   horario: "",  // ex.: "Seg a sáb, 8h às 18h". Vazio = não mostra.
   // CONFIRMAR com a loja antes de publicar:
   entregaGratis: ["Jardim de Piranhas", "Caicó", "São Bento", "Brejo do Cruz"],
+
+  // Endereço CSV da Planilha Google publicada (Arquivo > Compartilhar >
+  // Publicar na Web > Produtos > CSV). Com ele preenchido, a vitrine vem
+  // da planilha, e a lista PRODUTOS abaixo vira só reserva.
+  planilhaCSV: "",
 };
 
 // Categorias dos filtros (na ordem). Só aparecem as que têm produto.
@@ -35,7 +40,9 @@ const FAMILIAS = [
 ];
 
 // ------------------------------------------------------------
-//  PRODUTOS
+//  PRODUTOS (reserva)
+//  Usada quando planilhaCSV está vazio ou a planilha não abre
+//  e o navegador ainda não tem uma cópia dela.
 //  Obrigatório: nome, categoria.
 //  Opcional:
 //  - marca:     "O Boticário", "Natura"...

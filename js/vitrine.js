@@ -1,7 +1,7 @@
 // ============================================================
 //  Vitrine: seletor de cheiro, categorias, busca e rótulos.
 // ============================================================
-(function () {
+window.Samara.registrar(function () {
   const S = window.Samara;
   const $ = (sel) => document.querySelector(sel);
 
@@ -100,9 +100,10 @@
     if (fam) ficha.push('<span class="familia-nome">' + S.escapar(fam.nome.toLowerCase()) + "</span>");
     if (p.detalhe) ficha.push(S.escapar(p.detalhe));
 
-    const foto = p.foto
-      ? '<img src="' + S.escapar(p.foto) + '" alt="' + S.escapar(p.nome) + '" loading="lazy">'
-      : '<div class="rotulo-inicial" aria-hidden="true">' + S.escapar(p.nome.charAt(0)) + "</div>";
+    // A inicial fica sempre por baixo: se a foto não abrir (link errado,
+    // foto sem compartilhamento), a imagem some e a inicial aparece.
+    const foto = '<div class="rotulo-inicial" aria-hidden="true">' + S.escapar(p.nome.charAt(0)) + "</div>" +
+      (p.foto ? '<img src="' + S.escapar(p.foto) + '" alt="' + S.escapar(p.nome) + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">' : "");
 
     const classes = ["rotulo", p.destaque ? "destaque" : "", p.esgotado ? "esgotado" : ""].join(" ").trim();
     return (
@@ -152,4 +153,4 @@
   }
 
   render();
-})();
+});
